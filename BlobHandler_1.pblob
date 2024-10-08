@@ -1,0 +1,18 @@
+.branded-header-bg {
+background-color: #F0F1F3 !important;
+}
+.branded-header-item {
+color: #3C4653 !important;
+}
+.branded-nav-bg {
+background-color: #3C4653 !important;
+}
+.branded-nav-item {
+color: #fff !important;
+}
+.branded-highlight-bg {
+background-color: #1270CD !important;
+}
+.branded-highlight-item {
+color: #fff !important;
+}
