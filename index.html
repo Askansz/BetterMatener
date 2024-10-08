@@ -1,0 +1,872 @@
+<!DOCTYPE html><html manifest="/Catalog/Offline/Manifest?lg=10597"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Knivsta AppStore</title>
+    <link href="images/appcatalog_icon.png" rel="shortcut icon" type="image/x-icon">
+    <meta name="description" content="">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Full screen meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <script>
+        window.catalogPageLoadStart = new Date();
+    </script>
+
+    
+    <link href="css/styles.css" rel="stylesheet">
+
+
+    <link href="BlobHandler_1.pblob" rel="stylesheet">
+
+
+    
+    <style id="advanced_branding_css">
+        
+    </style>
+
+    
+    <noscript>
+        <style>
+            #loader {
+                display: none !important;
+            }
+                
+            #fatal_errors,
+            #js_disabled.error {
+                display: block;
+            }
+
+        </style>
+    </noscript>
+
+
+
+</head>
+
+<body>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="loader">
+    <div class="spinner">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+        <div class="bar6"></div>
+        <div class="bar7"></div>
+        <div class="bar8"></div>
+        <div class="bar9"></div>
+        <div class="bar10"></div>
+        <div class="bar11"></div>
+        <div class="bar12"></div>
+    </div>
+</div>
+
+<div class="overlay slider_bg">
+    �&nbsp;
+</div>
+
+
+
+<header class="branded-highlight-bg branded-highlight-item">
+    <div class="header_container">
+        <a id="search_action" class="hidden" href="#">
+            <div class="search_icon">�&nbsp;</div>
+            Search
+        </a>
+        <a id="menu_action" class="hidden" href="#">
+            Menu
+        </a>
+        <a id="back_action" class="hidden" href="#">
+            <div class="arrow_icon primaryBrandBackground">�&nbsp;</div>
+            Back
+        </a>
+
+        <div id="logo_aligner">
+            <a href="#" class="center_h">
+                <div>
+                    <img id="logo" src="BlobHandler.pblob">
+                </div>
+            </a>
+        </div>
+    </div>
+</header>
+
+<div id="page_container" class="clearfix">
+    
+    
+<nav class="branded-nav-bg branded-nav-item">
+    <div class="slider_content">
+        <div id="menu_content">
+                    
+
+            <script id="nav_menu_template" type="text/x-handlebars-template">
+                <!-- removed for prototype -->
+                <!--<div class="catalog_type">
+                    Catalog Type
+
+                    <div id="type_selector">
+                        <div id="type_apps" class="selected" style="width: 100%" >Apps</div>
+                                    
+                        <div id="type_books">Books</div>
+                    </div>
+
+                </div>-->
+                            
+
+                <!-- the adaptive select shows a larger menu for larger viewports -->
+                <div class="catalog_sort selection_area">
+
+                    <div class="select_header">
+                        Sort Order
+                    </div>
+
+                    <div class="select_header">
+                        <select tabindex="-1" disabled>
+                            <!-- data-show-meta="true" will allow the meta data to show on list-->
+                            {{ selectOptionHelper "Date Added" "Date Added" sortPreference }}
+                            {{ selectOptionHelper "Name A-Z" "Name A-Z" sortPreference }}
+                            {{ selectOptionHelper "Name Z-A" "Name Z-A" sortPreference }}
+                            {{ selectOptionHelper "Not Installed" "Not Installed" sortPreference }}
+                            {{ selectOptionHelper "Installed" "Installed" sortPreference }}
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <ul id="catalog_groups">
+
+                    <li> <a data-groups="All" class="all_of_type branded-nav-item" href="#">{{ allDialog }}</a> </li>
+
+                    {{#if featured }}
+                        <li> <a data-groups="Featured" href="#">Featured</a> </li>
+                    {{/if}}
+
+                    {{#if required }}
+                        <li> <a data-groups="Required" class="important" href="#">Required {{#if requiredToInstall }} <span>{{ requiredToInstall }}</span> {{/if}}</a> </li>
+                    {{/if}}
+
+                    {{#if updates }}
+                        <li> <a data-groups="Updates" class="important" href="#">Updates <span> {{ updates }} </span></a> </li>
+                    {{/if}}
+
+                    {{#if blacklisted }}
+                        <li> <a data-groups="Blacklisted" class="important" href="#">Denied <span> {{ blacklisted }} </span></a> </li>
+                    {{/if}}
+                </ul>
+                
+                {{#if categories.length }}
+                    <div class="catalog_categories">
+                        <div class="select_header">
+                            Categories
+                        </div>
+                        <ul style="height: {{ categoriesInitialHeight }}" >
+                            {{#each categories }}
+                            <li>
+                                <a data-category="{{ this.name }}" class="pinned branded-nav-item" {{#if this.pinned }} data-pinned-category="true" {{/if}} href="#">{{ this.name }}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                        <div class="more" {{#unless showMoreCategories }} style="display:none;" {{/unless}} > <button class="branded-nav-item">Show More</button> </div>
+                        <div class="less" {{#if showMoreCategories}} style="display:none;" {{/if}}> <button class="branded-nav-item">Show Less</button> </div>
+                    </div>
+                {{/if}}
+                 
+                {{#if needsLogout }}
+                    <ul>
+                        <li> <a href="#" class="logout">Log Out</a> </li>
+                    </ul>
+                {{/if}}
+
+            </script>
+        </div>
+    </div>
+                
+                
+    <div class="copyright">
+        ©2024 VMware AirWatch     
+    </div>
+                
+</nav>
+    
+    <div class="views_container">
+        
+        
+<div id="fatal_errors" class="view opened">
+    <div id="js_disabled" class="error">
+        <b>Error</b> You need to have JavaScript turned on. Please fix this and refresh/relaunch the app.
+    </div>
+                    
+    <div id="cookies_disabled" class="error">
+        <b>Error</b> You have cookies disabled. Please enable cookies and refresh/relaunch this app.
+    </div>
+                    
+    <div id="offline" class="error">
+        <b>Error</b> You are offline! Once you are online, we will fetch the latest data.
+    </div>
+    <div id="server_connection" class="error">
+        <b>Error</b> Unable to establish connection to your server. Please ensure you are connected to the network to be able to access the catalog.
+    </div>
+    <!-- when we get backend fatal errors we will use this to 
+    hook into a way to display them -->
+    <div id="dynamic_error_hook" class="error"></div>
+</div>
+        
+<div id="list_view" class="view main_list">
+
+    <div class="view_heading">
+
+        <script id="catalog_list_heading_template" type="text/x-handlebars-template">
+            <!-- this is a combination of group + category filter + sort -->
+            <span>{{filter}}</span> Sorted By <span>{{sortOrderDialog}}</span>
+
+            {{#if items}}
+                ( {{items.length}} )
+            {{/if}}
+        </script>
+    </div>
+
+    <div class="view_body">
+
+        <div class="no_results">
+            No Results Available
+            <div data-no-results-reason="empty_filter" style="display:none;">Use the menu on the top left to select another option.</div>
+            <div data-no-results-reason="no_assignments" style="display:none;">No items are assigned to you. Your administrator needs to assign you items before you can access them.</div>
+        </div>
+
+        <ul class="catalog_item_list adaptive">
+
+            <script id="catalog_list_item_template" type="text/x-handlebars-template">
+                {{#with item}}
+                    <li>
+                        <a href="#" data-guid="{{ guid }}" class="clearfix">
+                            {{#if isBeta }}
+                            <div class="beta">Beta</div>
+                            {{/if}}
+                            <img class="icon" data-lazy-img-src="{{icon}}" />
+                            <div class="item_info">
+                                <div class="name">{{name}}</div>
+                                <div class="extra_info">
+                                    <div class="rating">
+                                    
+                                    {{#if ../isReviewable }}
+                                            {{ ratingStarsHelper rating }}
+                                    {{/if}}
+                                    {{ installButtonHelper this }}
+                                    </div>
+                                    
+                                    {{#if ../showMeta }}
+                                        <span>{{ showFilteredMetaData ../../metaProperty this }}</span>
+                                    {{else}}
+                                        {{#if version}}
+                                            <span>version: {{version}} </span>
+                                        {{/if}}
+                                    {{/if}}
+
+                                    {{#if ../isWebApp }}
+                                        <span>Web App</span>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {{/with}}
+            </script>
+
+        </ul>
+
+        <div class="all_results_loaded">
+            All Apps Loaded
+        </div>
+    </div>
+</div>
+
+        
+ <div id="details_view" class="view stack">
+    <!-- heading -->
+    <div class="view_heading sticky">
+        <div class="details_heading">
+            <script id="details_header_template" type="text/x-handlebars-template">
+                <ul class="catalog_item_list">
+                    {{#with item}}
+                        <li>
+                            <div class="item_summary" data-guid="{{ guid }}">
+                                {{#if isBeta }}
+                                    <div class="beta">Beta</div>
+                                {{/if}}
+                                <img class="icon" src="{{ icon }}" />
+                                <div class="item_info">
+                                    <div class="name">{{name}}</div>
+                                    <div class="extra_info">
+                                        <div class="rating">
+                                        {{#if ../isReviewable }}
+                                                {{ ratingStarsHelper rating }}
+                                        {{/if}}
+                                        {{ installButtonHelper this }}
+                                        </div>
+                                        {{#if size}} <span>size: {{size}}</span> {{/if}}
+                                        {{#if ../isWebApp }}<span>Web App</span> {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item_version">
+                               {{#if version}} <span>version: {{version}} </span> {{/if}}
+                            </div>
+                        </li>
+                    {{/with}}
+                </ul>
+            </script>
+        </div>
+    </div>
+
+    <!-- body -->
+     <div class="view_body">
+
+         <div id="unable_to_load_details" class="hidden">
+             Whoops! We are currently not able to retrieve this app's detailed information.
+         </div>
+
+         <div class="details_body">
+
+             <div class="detail_info_container">
+                 <script id="details_body_template" type="text/x-handlebars-template">
+                    {{#if detailsLoaded }}
+                        {{#if screenshots }}
+                            <h4>Screenshots</h4>
+                            <div class="screenshots">
+                                {{ screenshotsHelper screenshots true }}
+                            </div>
+                        {{/if }}
+                        <h4>Description</h4>
+
+                        <div class="description collapsible collapsed">
+                            <div class="collapsible_content">
+                                {{#unless description }} No Description Available {{/unless}}
+                                {{{ description }}}
+                            </div>
+                        </div>
+                        <div class="collapsible_toggles">
+                            <div class="gradient"></div>
+                            <div class="show_more primaryBrandText">
+                                Show More
+                            </div>
+                            <div class="show_less primaryBrandText">
+                                Show Less
+                            </div>
+                        </div>
+                    {{/if}}
+                </script>
+             </div>
+
+             <div class="leave_review">
+                 <div class="overlay">
+                     <div class="saving">Saving...</div>
+                 </div>
+                 <div class="rating_input_area">
+                     <div class="rate_this">
+                         Rate this app:
+                     </div>
+
+                     <div class="rating">
+                         <a data-ats-id="1star-ats" href="#">1</a>
+                         <a data-ats-id="2star-ats" href="#">2</a>
+                         <a data-ats-id="3star-ats" href="#">3</a>
+                         <a data-ats-id="4star-ats" href="#">4</a>
+                         <a data-ats-id="5star-ats" href="#">5</a>
+                     </div>
+                 </div>
+
+                 <form action="#" method="post">
+
+                     <!-- review_rating is the input that will be modified based on
+                         the rating star selection area above. bindings in ratings.js -->
+                     <input type="hidden" name="review_rating" id="review_rating">
+                     <input type="hidden" name="user_rating_id" id="user_rating_id">
+
+                     <textarea tabindex="-1" maxlength="255" placeholder="Let us know what you think about this app..."></textarea>
+
+                     <div class="form_actions">
+                         <input data-ats-id="save-ats" type="submit" value="Save">
+                         <input data-ats-id="cancel-ats" type="button" class="cancel" value="Cancel">
+                     </div>
+
+                 </form>
+
+             </div>
+
+             <div class="reviews_list_container">
+                 <script id="details_reviews_template" type="text/x-handlebars-template">
+                    
+                    {{#if reviewable }}
+                        <h4>Reviews ({{ reviews.length }})</h4>
+                        <div class="collapsible collapsed">
+                            <div class="collapsible_content">
+                                <ul class="review_list">
+                                    {{#unless reviews}}
+                                    <li class="no_reviews">This app has not been reviewed. Why not install the app and leave a review yourself?</li>
+                                    {{/unless}}
+                                    {{#each reviews}}
+                                        <li {{#if currentUser }} class="current_user" {{/if}} data-user-rating-id="{{userRatingId}}" >
+
+
+                                            <div class="rating" data-rating="{{rating}}">
+                                                {{ratingStarsHelper rating}}
+                                            </div>
+                                            <div class="creation_details">
+                                                {{#if currentUser}} by You - {{/if}} <span>{{date}}</span>
+                                                <span class="{{#unless currentUser}} hidden {{/unless}} edit_review primaryBrandText">
+                                                    Edit Review
+                                                </span>
+                                            </div>
+                                            <div class="review">
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="collapsible_toggles">
+                            <div class="gradient"></div>
+                            <div class="show_more primaryBrandText">
+                                Show More
+                            </div>
+                            <div class="show_less primaryBrandText">
+                                Show Less
+                            </div>
+                        </div>
+
+                    {{/if}}
+
+                </script>
+             </div>
+
+             <div class="support_container">
+                 <script id="details_support_template" type="text/x-handlebars-template">
+                    {{#if this }}
+                        <h4>Support</h4>
+                        <div class="support">
+                            <ul class="support_list">
+                                {{#if this.email}}
+                                    <li>
+                                        <span>Email:</span> {{ email }}
+                                    </li>
+                                {{/if}}
+                                {{#if this.phone}}
+                                    <li>
+                                        <span>Phone:</span> {{ phone }}
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                </script>
+             </div>
+         </div>
+     </div>
+</div>
+
+        
+<div id="featured" class="view">
+    <div class="view_body">
+        <div class="featured_container">
+                            
+            <h2 class="primaryBrandText"> Featured Apps </h2>
+
+            <!-- Note: the featured list is a glorified version of the main list and inherits a lot so prepare for this when changing either  -->
+            <ul class="catalog_item_list featured_items">
+                <!-- <li class="even"> -->
+                <script id="featured_list_item_template" type="text/x-handlebars-template">
+                    {{#each this }}
+                        <li {{ evenClassHelper @index }}>
+                            <a href="#" data-guid="{{guid}}">
+                                <img class="icon" src="{{ featuredIcon }}" />
+                                <div class="item_info">
+                                    <div class="name"> {{ name }} </div>
+                                    <div class="extra_info">
+                                        <!-- Reserved spot for the featured information available to be set on the settings-->
+                                    </div>
+                                </div>
+                            </a>
+                            {{ installButtonHelper this }}
+                        </li>
+                    {{/each}}
+                </script>
+
+            </ul>
+        </div>
+    </div>
+</div>
+        
+<div id="login" class="view">
+    <div class="view_body">
+                        
+        <div class="login_container">
+            <h3>Knivsta AppStore</h3>
+            <div class="user_login">Login</div>
+                            
+            <div class="login_error">
+                Invalid credentials. Please provide correct values for all of the fields below.
+            </div>
+            <form>
+                
+                <div data-wrapper="token_wrap" class="hidden">
+                    <label for="token">Token</label>
+                    <input id="token" name="token" type="text" tabindex="1" data-allow-tab="" disabled="">
+                </div>
+                <div data-wrapper="user_pass_wrap" class="hidden">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" tabindex="2" data-allow-tab="" disabled="">
+
+                    <input type="checkbox" name="remember_username" id="remember_username" disabled="">
+                    <label for="remember_username" class="for_remember">Remember username</label>
+
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" tabindex="3" data-allow-tab="" disabled="">
+                </div>
+                
+                    
+                <input type="submit" id="login_submit" name="login_submit" class="branded-highlight-bg branded-highlight-item" tabindex="3" value="Login">
+                                
+            </form>
+        </div>
+                        
+    </div>
+</div>  
+    
+    </div>
+    
+    
+<div id="search" class="search branded-nav-bg branded-nav-item">
+    <div class="slider_content">
+        <form name="search_form" action="#" method="get">
+            
+            <input type="text" tabindex="-1" disabled="" id="search_input" name="search_input" placeholder="Name or Category...">
+            <!-- this is the 'X' used to clear the input -->
+            <div class="input_clear">�&nbsp;</div>
+        </form>
+        <div class="no_search_results" style="display:none;"> No Results Available </div>
+        <div class="search_body">
+            <ul class="catalog_item_list search_results">
+
+                
+                <script id="search_result_count_template" data-pre-cache="true" type="text/x-handlebars-template">
+                    <li class="search_results_count">
+                        <div class="result_counter"> {{ this }} </div>
+                    </li>
+                </script>
+                
+                <script id="search_result_item_template" data-pre-cache="true" type="text/x-handlebars-template">
+                    {{#with item}}
+                    <li>
+                        <a class="branded-nav-item" href="#" data-guid="{{ guid }}">
+                            {{#if isBeta }}
+                                <div class="beta">Beta</div>
+                            {{/if}}
+                            <img class="icon" src="{{icon}}" />
+                            <div class="item_info">
+                                <div class="name">{{ labelMatchHighlightHelper name ../matchingInput }}</div>
+                                <div class="extra_info">
+                                    <div class="rating">
+                                    
+                                    {{#if ../isReviewable }}
+                                            {{ ratingStarsHelper rating }}
+                                    {{/if}}
+                                    {{ installButtonHelper this }}
+                                    </div>
+                                    {{#if version}}
+                                        <span>version: {{version}} </span>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {{/with}}
+                </script>
+
+                
+                <script id="search_result_catalog_template" data-pre-cache="true" type="text/x-handlebars-template">
+                    {{#with category}}
+                    <li>
+                        <a class="category_result branded-nav-item" href="#">
+                            {{ labelMatchHighlightHelper this ../matchingInput }}
+                        </a>
+                    </li>
+                    {{/with}}
+                </script>
+            </ul>
+        </div>
+    </div>
+    <a href="#" class="slider_close">Close</a>
+</div>
+
+
+</div>
+
+<ul id="notifications">
+    <script id="notify_item_template" type="text/x-handlebars-template">
+        <li data-notif-guid="{{ guid }}" class="{{ appendingClass }} {{#unless persist }} closable {{/unless}}">
+            {{ message }}
+        </li>
+    </script>
+            
+    <!--<li> Your request to install was received!<br>Your device will prompt soon to finish the install. </li>-->
+</ul>
+<div id="modals_container">
+    
+</div>
+
+<script id="eulas_template" type="text/x-handlebars-template">
+    
+    <div class="eulas">
+        <div class="eula">
+            <h3 class="primaryBrandText modal_title">{{title}}</h3>
+            {{{content}}} 
+        </div>
+    </div>
+    
+    <div class="button_set">
+        <button data-eula-action="accept" data-eula-id="{{id}}">Accept</button>
+        <button data-eula-action="decline" data-eula-id="{{id}}" class="button no_style_button">Decline</button>
+    </div>
+</script>
+
+
+<script id="managed_distribution_invites_template" type="text/x-handlebars-template">
+
+    <div class="managed_distribution">
+        
+        <h3 class="primaryBrandText modal_title">{{ title }}</h3>
+
+        <div class="content">
+            {{ message }}
+        </div>
+        
+        <div class="button_set">
+            <a href="{{inviteUrl}}" onclick="window.location = this.href;" target="_blank" rel="noopener noreferrer"> Accept Invite </a>
+        </div>
+
+    </div>
+    
+</script>
+
+<script id="installation_confirmation_template" type="text/x-handlebars-template">
+
+    <div class="installConfirmation">
+
+        <h3 class="primaryBrandText modal_title">
+            {{#if activationUrl}}
+                Installation and Activation
+            {{else}}
+                Confirm Installation
+            {{/if}}
+        </h3>
+
+        <div class="content">
+            
+            {{installHeading}}
+            <br />
+            <br />
+
+            {{#if activationUrl}}
+                {{activationMessage}}
+                <br /><br />
+            {{/if}}
+            
+
+            {{message}}
+            
+            
+                        
+            {{#if size}}
+            <br /><br /> Size: {{size}}
+            {{/if}}
+            
+            {{#if price}}
+                {{#if publicPaid }}
+                    <br /> Price in store: {{price}}
+                {{else}}
+                    <br /> Cost of app:: {{price}}
+                {{/if}}
+            {{/if}}
+
+        </div>
+
+        <div class="button_set">
+            {{#if activationUrl}}
+            <button onclick="Catalog.modal.popContainer(this);Catalog.installer.install('{{guid}}', /*ignoreConfirmation*/ true)" class="primaryBrandBackground primaryBrandBorder"> {{ installButtonState }} </button>
+            <button onclick="Catalog.modal.popContainer(this);Catalog.utils.openUrl('{{activationUrl}}')" class="primaryBrandBackground primaryBrandBorder"> Activate </button>
+            {{else}}
+            <button onclick="Catalog.modal.popContainer(this);Catalog.installer.confirmAndInstall('{{guid}}')">  {{ installButtonState }} </button>
+            {{/if}}
+            
+            <button onclick="Catalog.modal.popContainer(this);" class="no_style_button"> No, thanks </button>
+        </div>
+
+    </div>
+
+</script>
+<script id="console_info_prompt_template" type="text/x-handlebars-template">
+    <h3 class="primaryBrandText modal_title">Device and Log Information</h3>
+    <div class="content">
+        
+        <ul style="margin: 10px 0; padding: 0; ">
+            <li style="list-style-type: none;"> <b>Device Identifier:</b> {{uid}} </li>
+            <li style="list-style-type: none;"> <b>Device Type:</b> {{deviceType.stringVal}} (enum: {{deviceType.enumVal}}) </li>
+            <li style="list-style-type: none;"> <b>Cookies Enabled:</b> {{cookiesEnabled}} </li>
+            <li style="list-style-type: none;"> <b>Authentication Required:</b> {{requiresAuth}} </li>
+            <li style="list-style-type: none;"> <b>HTML parse to JS loaded (ms):</b> {{timeForCatalogInit}} </li>
+            <li style="list-style-type: none;"> <b>Framework initialized (ms):</b> {{timeToCompleteInit}} </li>
+        </ul>
+        
+        {{#if logs}}
+        
+        Client-side Logs
+        <div style="width: 100%; height: 175px; overflow: auto; background: #efefef; padding:10px; margin-top:10px;">
+            <ul style="margin: 10px 0; padding: 0; ">
+                {{#each logs}}
+                <li style="list-style-type: none; padding-bottom:10px; color: {{typeColor}};"> <span style="color:#333;">{{type}} log</span> <br /> {{{data}}}</li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+        
+    </div>
+</script>
+
+
+
+
+
+    
+    
+    <script>
+
+
+    /*********************
+    JavaScript that will collect logs and error information
+    to help debug issues whenever we need the info 
+    *********************/
+    (function(window) {
+
+        var logStack = [],
+            oldConsole = window.console,
+            oldOnError = window.onerror,
+            remember = function(type, loggedValues) {
+                logStack.push({
+                    id: logStack.length + 1,
+                    type: type,
+                    data: loggedValues,
+                    typeColor: type === 'error' ? '#CF3F3F' /*red*/ : type === 'info' ? '#2470C4' /*blue*/ : 'darkslategrey'
+                });
+            };
+
+        var _console = {
+            log: function() {
+                var args = Array.prototype.slice.call(arguments);
+                oldConsole.log.apply(oldConsole, args);
+                remember('log', args);
+            },
+            info: function() {
+                var args = Array.prototype.slice.call(arguments);
+                oldConsole.info.apply(oldConsole, args);
+                remember('info', args);
+            },
+            error: function() {
+                var args = Array.prototype.slice.call(arguments);
+                oldConsole.error.apply(oldConsole, args);
+                remember('error', args);
+            }
+        };
+
+        // override the console interface
+        window.console = _console;
+
+        // catch any javascript errors as well
+        window.onerror = function (errorMsg, url, lineNumber, colNumber, stackTrace) {
+
+            // we would like to have better indication that this
+            // error resulted from a page script if thats the case otherwise show the
+            // url for the external js page
+            var hashIndex = location.href.indexOf('#'),
+                pageUrl = location.href.substr(0, hashIndex > -1 ? hashIndex : location.href.length ),
+                origin = url === pageUrl ? 'embedded script on the page' : url;
+                
+            // use or new form of console logging
+            window.console.error('JS ERROR: ', errorMsg, 'from ' + origin + ' line: ' + lineNumber + ' col: ' + colNumber);
+
+            oldOnError && oldOnError(errorMsg, url, lineNumber, colNumber, stackTrace);
+        };
+
+        // Create an interface in which to receive our captured logs
+        window.consoleLogStack = function() {
+            var i, logs = [];
+            for (i = 0; i < logStack.length; i++) {
+                logs.push(JSON.parse(JSON.stringify(logStack[i])));
+
+                if (logs[i].data.length > 0) {
+                    logs[i].data = logs[i].data.join(' ').replace(/(\r\n|\n|\r)/g, "<br />");
+                }
+            }
+            return logs;
+        };
+    })(window);
+
+    </script>
+
+    
+
+    <script src="js/vendor.js"></script>
+
+    <script src="js/catalog_app.js"></script>
+
+    
+    <script type="application/javascript">
+
+        // Set up FastClick
+        window.addEventListener('load', function () {
+            if (typeof FastClick !== 'undefined') {
+                FastClick.attach(document.body);
+            }
+
+            Catalog.baseUrl = "/Catalog/";
+            Catalog.isHideCommentsEnabled = 'True';
+            Catalog.localization.setBundle( {"CatalogName":"Knivsta AppStore","AllAppPlural":"All Apps","ArgItemFound":"{0} App Found","ArgItemFoundPlural":"{0} Apps Found","ArgCategoryFound":"{0} Category Found","ArgCategoryFoundPlural":"{0} Categories Found","Install":"Install","Pending":"Pending","Installed":"Installed","NotInstalled":"Not Installed","Update":"Update","Activate":"Activate","Public":"Public","Internal":"Internal","Purchased":"Purchased","Web":"Web","CustomB2B":"Custom","Products":"Products","DateAdded":"Date Added","NameAZ":"Name A-Z","NameZA":"Name Z-A","CreatorAZ":"Creator A-Z","CreatorZA":"Creator Z-A","All":"All","Featured":"Featured","Required":"Required","Updates":"Updates","Blacklisted":"Denied","Price":"Price","Size":"Size","Retry":"Retry","Processing":"Processing","Ok":"OK","Login":"Login","LoggingYouIn":"Logging you in...","EulaForArg":"Terms of Use for: {0}","WebAppDescription":"Installing this web application will create a link to the website available from your homescreen","OfflineInstallRequestAlert":"You are currently offline and will be able to request installation of the app once you are back online","SilentInstallConfirmationInfo":"This application will install silently on your device without any additional prompts.","InstallationProcessInfo":"Your installation will now go through additional security checks and validations. Until these checks are complete, the status of the application will say \"Processing\" and will be updated as soon as the validations are complete which may take a couple of minutes.","DeclineAppCatalogUserAgreementDisclaimer":"By declining these terms of use, you are no longer allowed to use any of the applications associated to these terms.  These applications and their data will be removed from your device.  Are you sure you wish to decline these Terms of Use?","ArgUserInstallAndActivationInfo":"{0} is an app which requires user activation. In order to do so, you must first install the latest version of the application, then activate it below.","ArgUserInstallConfirmation":"Install {0} now?","GenericMarketplaceRedirection":"You will be redirected to the store to download this app.","GenericMessageForSilentInstall":"The app will download automatically and appear on your device.","BookmarkCreationForInstall":"","TakenOutOfCatalogInstallStartOnHome":"You will be taken out of this catalog to the home screen on your device, and the download will begin automatically.","PromptedForInstallByOsThenTakenHome":"You will receive a push notification to continue with installation.","InstructToGoToDownloadsFolder":"This file will be downloaded and available to install from the downloads folder on your device.","AgentNotificationRedirection":"","ProfileInstallPrompt":"To install, tap on the profile installation prompt that appears when you continue.","RedirectToWebAppDirectly":"You will be taken to this web app in your browser.","InstallArg":"Install {0}?","ContinueToArg":"Continue to {0}?","InstallRequestExpired":"Install Request has expired. Please refresh the page and install again.","ReviewRequestExpired":"Review Request is unauthorized or expired. Please refresh the page and review again.","InstallRequestReceived":"Your request to install was received!","WentOfflineNotification":"You have lost network connection. Some features may not be available until you resume connection.","UpdatingAppCatalogResources":"Applying latest changes to the catalog...","InstallRequestFailed":"Your request to install failed! Please refresh, retry then contact your IT Administrator if this problem persists.","AndroidBookmarkNotificationText":""} );
+
+
+            // Track the time to load in the framework once the html started
+            Catalog.timeToInit = new Date() - window.catalogPageLoadStart;
+
+            // Start the catalog
+            Catalog.init();
+
+            // Track how long it took to complete initialization
+            Catalog.timeToCompleteInit = (new Date() - window.catalogPageLoadStart) - Catalog.timeToInit;
+
+        }, /*useCapture: */false);
+
+    </script>
+
+
+
+</body></html>
