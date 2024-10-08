@@ -1,0 +1,9 @@
+.style_statusIndicator__9rvu7{--status-indicator-size:10px;--status-indicator-background-color:var(
+        --color-surface-neutral-container-lightest
+    );display:flex;flex:0 0 auto;border-radius:var(--status-indicator-size);inline-size:var(--status-indicator-size);block-size:var(--status-indicator-size);background-color:var(--status-indicator-background-color)}.style_statusIndicator--busy__ziD95{--status-indicator-background-color:var(
+        --color-surface-feedback-error-darkest
+    )}.style_statusIndicator--available__SAR6T{--status-indicator-background-color:var(
+        --color-surface-feedback-success-darkest
+    )}.style_statusIndicator--offline__stKHS{--status-indicator-background-color:var(
+        --color-surface-neutral-container-mid
+    )}.style_statusIndicator--new__n5MDw{--status-indicator-background-color:var(--color-surface-brand-darkest)}.style_statusIndicator--xs__sWr7d{--status-indicator-size:4px}.style_statusIndicator--sm__ncngp{--status-indicator-size:6px}.style_statusIndicator--md__XYr9e{--status-indicator-size:8px}.style_statusIndicator--lg__cSlMg{--status-indicator-size:10px}
